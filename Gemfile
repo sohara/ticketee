@@ -29,6 +29,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #   gem 'webrat'
 # end
 
+group :development do
+  gem 'rspec-rails', '2.0.0'
+end
+
 group :test do 
   gem 'rspec-rails', '2.0.0'
 end
@@ -38,4 +42,5 @@ group :cucumber do
   gem 'capybara'
   gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3", :require => "email-spec"
 end
+
 gem 'devise', '1.1.3'
