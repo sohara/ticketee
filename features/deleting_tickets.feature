@@ -2,9 +2,12 @@ Feature: Deleting tickets
 	In order to remove tickets
 	As a user I want to press a button and make them disappear
 	
-	Background: 
+	Background:
+		Given there is a user with the email address "user@ticketee.com" and password "password"
+		Given "user@ticketee.com" has confirmed their account
+		And I am signed in as them
 		Given there is a project called "TextMate 2" 
-		And that project has a ticket:
+		And "user@ticketee.com" has created a ticket for this project:
 		 | title          | description                   |
 		 | Make it shiny! | Gradients! Starbursts! Oh my! |
 
