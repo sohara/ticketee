@@ -1,7 +1,8 @@
-Given /^there is an? (admin|user) with the email address "([^"]*)" and password "([^"]*)"$/ do |admin,email, password|
+Given /^there is an? (unconfirmed)?\s?(admin|user) with the email address "([^"]*)" and password "([^"]*)"$/ do |unconfirmed,admin,email, password|
   @user = User.create!(:email => email, :password => password, :password_confirmation => password)
   @user.admin = admin == "admin"
   @user.save!
+  @user.confirm! unless unconfirmed
 end
 
 Given /^"([^"]*)" has confirmed their account$/ do |email|

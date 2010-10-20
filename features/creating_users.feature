@@ -5,7 +5,6 @@ Feature: Creating Users
 
   Background:
     Given there is an admin with the email address "admin@ticketee.com" and password "password"
-		And "admin@ticketee.com" has confirmed their account
     And I am signed in as them
     Given I am on the homepage
     When I follow "Admin"
