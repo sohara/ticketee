@@ -8,5 +8,6 @@ module ApplicationHelper
     if current_user && current_user.admin?
       block.call
     end
+    nil
   end
 end
