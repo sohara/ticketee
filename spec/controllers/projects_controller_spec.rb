@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe ProjectsController do
   before do
-    
-    @warden = OpenStruct.new
-    @warden.stub!(:set_user)
+    stub_warden
     request.env['warden'] = @warden
   end
   
@@ -14,8 +12,7 @@ describe ProjectsController do
   describe "standard users" do 
     { "new" => "get", "create" => "post", "edit" => "get", "update" => "put", "destroy" => "delete" }.each_pair do |action, method|
       it "cannot access the #{action} action" do
-        @warden.should_receive(:authenticate!).with(:scope => :user)
-        controller.stub!(:current_user).and_return(user)
+        sign_in_as(user)
         send(method, action.dup, :id => project.id)
         response.should redirect_to(root_path)
         flash[:alert].should eql("You must be an admin to do that.")
