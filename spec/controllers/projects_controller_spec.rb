@@ -18,12 +18,20 @@ describe ProjectsController do
         flash[:alert].should eql("You must be an admin to do that.")
       end
     end
+    
+    it "cannot access the show action" do 
+      sign_in_as(user)
+      get :show, :id => project.id
+      response.should redirect_to(projects_path)
+      flash[:alert].should eql("The project you were looking for could not be found.")
+    end
   end
   
-  it "displays an error message when asked for a missing project" do 
+  it "displays an error message when asked for a missing project" do
+    sign_in_as(user)
     get :show, :id => "not-here"
     response.should redirect_to(projects_path) 
-    flash[:error].should eql("The project you were looking for could not be found.")
+    flash[:alert].should eql("The project you were looking for could not be found.")
   end
   
 end
