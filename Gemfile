@@ -44,3 +44,4 @@ group :cucumber do
 end
 
 gem 'devise', '1.1.3'
+gem 'cancan'
