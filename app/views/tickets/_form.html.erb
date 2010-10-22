@@ -4,11 +4,14 @@
 		<%= f.label :title %>
 		<%= f.text_field :title %> 
 	</p>
-	<p> 
-		<%= f.label :asset, "File" %>
-		<%= f.file_field :asset %>
-	</p>
-	<p> 
+	<% number = 0 %>
+	<%= f.fields_for :assets do |asset| %>
+		<p>
+			<%= asset.label :asset, "File ##{number += 1} " %>
+			<%= asset.file_field :asset %>
+		</p>
+	<% end %>
+	<p>
 		<%= f.label :description %> <%= f.text_area :description %>
 	</p>
 	<%= f.submit %>
