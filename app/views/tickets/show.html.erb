@@ -5,5 +5,14 @@
 <%= authorized?("delete tickets", @project) do %>
 	<%= link_to "Delete", [@project, @ticket], :method => :delete, :confirm => "Are you sure?" %>
 <% end %>
-Created by <%= @ticket.user.email %>
-<%= simple_format(@ticket.description) %>
+<div id="ticket">
+	Created by <%= @ticket.user.email %>
+	<%= simple_format(@ticket.description) %>
+	<% if @ticket.asset.exists? %>
+		<h3>Attached File</h3>
+		<div class="asset">
+			<p><%= link_to File.basename(@ticket.asset.path), @ticket.asset.url %></p>
+			<p><small><%= number_to_human_size(@ticket.asset.size) %> (<%= @ticket.asset.content_type %>)</small></p>
+		</div>
+	<% end %>
+</div>

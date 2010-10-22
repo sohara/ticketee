@@ -45,3 +45,4 @@ end
 
 gem 'devise', '1.1.3'
 gem 'cancan'
+gem 'paperclip'

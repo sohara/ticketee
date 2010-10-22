@@ -1,8 +1,12 @@
-<%= form_for [@project, @ticket] do |f| %> 
+<%= form_for [@project, @ticket], :html => { :multipart => true } do |f| %> 
 	<%= f.error_messages %>
 	<p>
 		<%= f.label :title %>
 		<%= f.text_field :title %> 
+	</p>
+	<p> 
+		<%= f.label :asset, "File" %>
+		<%= f.file_field :asset %>
 	</p>
 	<p> 
 		<%= f.label :description %> <%= f.text_area :description %>
