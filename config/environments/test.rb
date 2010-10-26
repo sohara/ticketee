@@ -32,4 +32,7 @@ Ticketee::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # Allow all parameters to show up in test logs
+  config.filter_parameters = []
 end

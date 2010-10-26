@@ -30,10 +30,12 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 
 group :development do
+  gem 'rspec'
   gem 'rspec-rails', '2.0.0'
 end
 
 group :test do 
+  gem 'rspec'
   gem 'rspec-rails', '2.0.0'
 end
 
@@ -41,6 +43,7 @@ group :cucumber do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'email_spec', :git => "git://github.com/bmabey/email-spec.git", :branch => "rails3", :require => "email-spec"
+  gem 'database_cleaner'
 end
 
 gem 'devise', '1.1.3'
